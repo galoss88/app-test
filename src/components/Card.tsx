@@ -1,5 +1,6 @@
 import { Button } from "./Button";
 import { Input } from "./Input";
+import { Title } from "./Title";
 
 interface CardProps {
   children: React.ReactNode;
@@ -25,7 +26,9 @@ const CardItem = ({ title }: ICardItemProps) => {
 type CardItemType = typeof CardItem & {
   Input: typeof Input;
   Button: typeof Button;
+  Title: typeof Title;
 };
 Card.Item = CardItem as CardItemType;
 Card.Item.Input = Input;
 Card.Item.Button = Button;
+Card.Item.Title = Title;
