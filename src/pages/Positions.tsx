@@ -1,4 +1,4 @@
-import { Card } from "../components/Card";
+import { Card } from "../components";
 
 export const Positions = () => {
   return (
@@ -10,6 +10,7 @@ export const Positions = () => {
       }}
     >
       <Card.Item title="Hello World" />
+      <Card.Item.Input type="text"></Card.Item.Input>
     </Card>
   );
 };
