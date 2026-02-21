@@ -1,3 +1,5 @@
-export const Button = () => {
-  return <button></button>;
+export const Button = (
+  props: React.ButtonHTMLAttributes<HTMLButtonElement>,
+) => {
+  return <button {...props}></button>;
 };
