@@ -17,19 +17,26 @@ interface IBodyApplyPosition {
 
 export const useApplyPosition = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string>();
+  const [error, setError] = useState<string>("");
 
   const handleSubmit = async (body: IBodyApplyPosition) => {
     try {
       if (body) {
         setLoading(true);
-        await fetch(`${BASE_URL_API}${sufixApplyPosition}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const responseApi = await fetch(
+          `${BASE_URL_API}${sufixApplyPosition}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
           },
-          body: JSON.stringify(body),
-        });
+        );
+
+        if (!responseApi?.ok) {
+          throw new Error("Ocurrio un error, no se pudo enviar la postulacion");
+        }
       }
     } catch (error) {
       setError(error instanceof Error ? error.message : "Error desconocido.");
