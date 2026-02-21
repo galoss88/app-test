@@ -1,12 +1,11 @@
-import './App.css'
+import { Positions } from "./pages/Positions";
 
 function App() {
-
   return (
     <div>
-      <h1>Hello World</h1>
+      <Positions />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
