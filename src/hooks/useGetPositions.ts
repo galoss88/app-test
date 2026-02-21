@@ -10,6 +10,7 @@ export const useGetPositions = () => {
   useEffect(() => {
     const getPositionsDataApi = async () => {
       try {
+        setError("");
         setLoading(true);
         const responseApi = await getPositions();
 

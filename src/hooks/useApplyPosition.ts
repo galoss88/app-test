@@ -28,6 +28,7 @@ export const useApplyPosition = () => {
 
   const handleSubmit = async (body: IHandleSubmit) => {
     try {
+      setError("");
       if (body) {
         setLoading(true);
         const dataCandidate = await getCandidate();
@@ -37,7 +38,7 @@ export const useApplyPosition = () => {
           candidateId: dataCandidate.candidateId,
           repoUrl: MY_REPO_URL,
         };
-        
+
         const responseApi = await fetch(
           `${BASE_URL_API}${sufixApplyPosition}`,
           {
