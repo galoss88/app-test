@@ -1,3 +1,5 @@
+import { Input } from "./Input";
+
 interface CardProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
@@ -19,4 +21,6 @@ const CardItem = ({ title }: ICardItemProps) => {
   return <div>{title}</div>;
 };
 
-Card.Item = CardItem;
+type CardItemType = typeof CardItem & { Input: typeof Input };
+Card.Item = CardItem as CardItemType;
+Card.Item.Input = Input;
