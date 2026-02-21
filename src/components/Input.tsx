@@ -1,11 +1,11 @@
 interface InputProps {
   type: "text" | "number" | "email" | "password";
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({ type, placeholder, value, onChange }: InputProps) => {
+export const Input = ({ type = "text", placeholder = "Introducir texto", value, onChange }: InputProps) => {
   return (
     <input
       type={type}
