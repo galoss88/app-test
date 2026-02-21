@@ -8,6 +8,7 @@ export const Positions = () => {
 
   if (loading) return <Loading />;
   if (error) return <h1>Ocurrio un error al cargar las posiciones.</h1>;
+
   return (
     <div
       style={{
@@ -25,6 +26,7 @@ export const Positions = () => {
             style={{
               display: "flex",
               flexDirection: "column",
+              justifyContent: "space-between",
               padding: "10px",
               borderRadius: "10px",
               boxShadow: "0 4px 20px -2px rgba(0, 0, 0, 0.1)",
