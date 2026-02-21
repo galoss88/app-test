@@ -35,7 +35,10 @@ export const Positions = () => {
             }}
           >
             <Card.Item.Title title={position.title} />
-            <Card.Item.Input type="text"></Card.Item.Input>
+            <Card.Item.Input
+              placeholder="Github repository URL"
+              type="text"
+            ></Card.Item.Input>
             <Card.Item.Button title="Enviar postulación.">
               Submit
             </Card.Item.Button>
