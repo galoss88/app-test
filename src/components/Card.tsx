@@ -1,4 +1,4 @@
-import type { Button } from "./Button";
+import { Button } from "./Button";
 import { Input } from "./Input";
 
 interface CardProps {
@@ -22,6 +22,10 @@ const CardItem = ({ title }: ICardItemProps) => {
   return <div>{title}</div>;
 };
 
-type CardItemType = typeof CardItem & { Input: typeof Input, Button: typeof Button };
+type CardItemType = typeof CardItem & {
+  Input: typeof Input;
+  Button: typeof Button;
+};
 Card.Item = CardItem as CardItemType;
 Card.Item.Input = Input;
+Card.Item.Button = Button;
