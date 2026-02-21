@@ -15,6 +15,9 @@ export const getCandidate = async (): Promise<IResponseApiGetCandidate> => {
       method: "GET",
     });
     if (!responseApi.ok) {
+      if (responseApi.status === 404) {
+        throw new Error("No se encontro candidato con el email proporcionado.");
+      }
       throw new Error(`Error HTTP: ${responseApi.status}`);
     }
     return responseApi.json();
