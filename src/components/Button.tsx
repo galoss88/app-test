@@ -9,4 +9,5 @@ export const Button = (
 const defaultStyle: React.CSSProperties = {
   backgroundColor: "#4051B5",
   color: "#FFFFFF",
+  borderRadius: "5px",
 };
