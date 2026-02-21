@@ -9,7 +9,14 @@ export const Positions = () => {
   if (loading) return <Loading />;
   if (error) return <h1>Ocurrio un error al cargar las posiciones.</h1>;
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "25px",
+        padding: "8px",
+      }}
+    >
       {positions &&
         positions.length > 0 &&
         positions?.map((position: IPositionsApi) => (
