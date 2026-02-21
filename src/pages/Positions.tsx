@@ -1,11 +1,13 @@
 import { Card } from "../components";
 import { Loading } from "../components/Loading";
+import { useApplyPosition } from "../hooks/useApplyPosition";
 import { useGetPositions } from "../hooks/useGetPositions";
 import type { IPositionsApi } from "../types/types";
 
 export const Positions = () => {
   const { positions, loading, error } = useGetPositions();
-
+  const { applyPosition } = useApplyPosition();
+  
   if (loading) return <Loading />;
   if (error) return <h1>Ocurrio un error al cargar las posiciones.</h1>;
 
@@ -39,7 +41,10 @@ export const Positions = () => {
               placeholder="Github repository URL"
               type="text"
             ></Card.Item.Input>
-            <Card.Item.Button title="Enviar postulación.">
+            <Card.Item.Button
+              title="Enviar postulación."
+              onClick={() => applyPosition({ jobId: position.id })}
+            >
               Submit
             </Card.Item.Button>
           </Card>
