@@ -11,10 +11,10 @@ export const Positions = () => {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "25px",
-        padding: "8px",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+        gap: "2rem",
+        padding: "2rem",
       }}
     >
       {positions &&
@@ -27,11 +27,12 @@ export const Positions = () => {
               flexDirection: "column",
               padding: "10px",
               borderRadius: "10px",
-              boxShadow: "0 0 1px 1px grey",
+              boxShadow: "0 4px 20px -2px rgba(0, 0, 0, 0.1)",
+              border: "1px solid rgba(0, 0, 0, 0.146)",
               gap: "10px",
             }}
           >
-            <Card.Item title={position.title} />
+            <Card.Item.Title title={position.title} />
             <Card.Item.Input type="text"></Card.Item.Input>
             <Card.Item.Button title="Enviar postulación.">
               Submit
