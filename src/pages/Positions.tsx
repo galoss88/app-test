@@ -1,9 +1,13 @@
 import { Card } from "../components";
+import { Loading } from "../components/Loading";
 import { useGetPositions } from "../hooks/useGetPositions";
 import type { IPositionsApi } from "../types/types";
 
 export const Positions = () => {
   const { positions, loading, error } = useGetPositions();
+
+  if (loading) return <Loading />;
+  if (error) return <h1>Ocurrio un error al cargar las posiciones.</h1>;
   return (
     <div>
       {positions &&
