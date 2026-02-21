@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { BASE_URL_API, sufixApplyPosition } from "../config/contants";
+import {
+  BASE_URL_API,
+  MY_REPO_URL,
+  sufixApplyPosition,
+} from "../config/contants";
+import { getCandidate } from "../services";
 /*
 {
   "uuid": "tu uuid (del Step 2)",
@@ -14,15 +19,25 @@ interface IBodyApplyPosition {
   candidateId: string;
   repoUrl: string;
 }
-
+interface IHandleSubmit {
+  jobId: string;
+}
 export const useApplyPosition = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
 
-  const handleSubmit = async (body: IBodyApplyPosition) => {
+  const handleSubmit = async (body: IHandleSubmit) => {
     try {
       if (body) {
         setLoading(true);
+        const dataCandidate = await getCandidate();
+        const bodyApplyPosition: IBodyApplyPosition = {
+          uuid: dataCandidate.uuid,
+          jobId: body.jobId,
+          candidateId: dataCandidate.candidateId,
+          repoUrl: MY_REPO_URL,
+        };
+        
         const responseApi = await fetch(
           `${BASE_URL_API}${sufixApplyPosition}`,
           {
@@ -30,7 +45,7 @@ export const useApplyPosition = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(body),
+            body: JSON.stringify(bodyApplyPosition),
           },
         );
 
