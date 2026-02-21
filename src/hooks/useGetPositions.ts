@@ -24,7 +24,7 @@ export const useGetPositions = () => {
         setPositions(data);
       } catch (err) {
         if (err instanceof Error && err.name !== "AbortError") {
-          setError(err.message);
+          setError("Ocurrio un error al cargar las posiciones.");
         }
       } finally {
         setLoading(false);

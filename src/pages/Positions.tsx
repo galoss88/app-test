@@ -7,9 +7,9 @@ import type { IPositionsApi } from "../types/types";
 export const Positions = () => {
   const { positions, loading, error } = useGetPositions();
   const { applyPosition } = useApplyPosition();
-  
+
   if (loading) return <Loading />;
-  if (error) return <h1>Ocurrio un error al cargar las posiciones.</h1>;
+  if (error) return <h1>{error}</h1>;
 
   return (
     <div
