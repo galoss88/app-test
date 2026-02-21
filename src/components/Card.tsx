@@ -1,25 +1,19 @@
 interface CardProps {
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 interface ICardItemProps {
   title: string;
 }
 
-export const Card = ({ children }: CardProps) => {
+export const Card = ({ children, style, ...props }: CardProps) => {
   return (
-    <div
-      style={{
-        backgroundColor: "red",
-        padding: "10px",
-        borderRadius: "10px",
-      }}
-    >
+    <div style={style} {...props}>
       {children}
     </div>
   );
 };
-
 
 const CardItem = ({ title }: ICardItemProps) => {
   return <div>{title}</div>;
