@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BASE_URL_API } from "../config/contants";
+import { getPositions } from "../services/positions";
 import type { IPositionsApi } from "../types/types";
 
 export const useGetPositions = () => {
@@ -9,13 +9,9 @@ export const useGetPositions = () => {
 
   useEffect(() => {
     const getPositionsDataApi = async () => {
-      const sufix = "/api/jobs/get-list";
       try {
         setLoading(true);
-        const responseApi = await fetch(`${BASE_URL_API}${sufix}`, {
-          method: "GET",
-          mode: "cors",
-        });
+        const responseApi = await getPositions();
 
         if (!responseApi.ok) {
           throw new Error(
