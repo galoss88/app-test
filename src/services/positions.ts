@@ -15,7 +15,7 @@ export const getPositions = async () => {
     return responseApi;
   } catch (e) {
     console.log(`Error llamada api posiciones: ${e}`);
-    throw new Error(`Ocurrio un error al llamar a la api de posiciones.`);
+    throw new Error(`Ocurrio un error al obtener posiciones a postular.`);
   }
 };
 

@@ -22,9 +22,9 @@ export const useGetPositions = () => {
 
         const data = await responseApi.json();
         setPositions(data);
-      } catch (err) {
-        if (err instanceof Error && err.name !== "AbortError") {
-          setError("Ocurrio un error al cargar las posiciones.");
+      } catch (e: unknown) {
+        if (e instanceof Error && e.name !== "AbortError") {
+          setError(e.message);
         }
       } finally {
         setLoading(false);
