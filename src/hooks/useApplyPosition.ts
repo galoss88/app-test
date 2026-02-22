@@ -1,10 +1,7 @@
 import { useState } from "react";
-import {
-  BASE_URL_API,
-  MY_REPO_URL,
-  sufixApplyPosition,
-} from "../config/contants";
-import { getCandidate } from "../services";
+import { MY_REPO_URL } from "../config/contants";
+import { applyPosition, getCandidate } from "../services";
+import type { IBodyApplyPosition } from "../types/types";
 /*
 {
   "uuid": "tu uuid (del Step 2)",
@@ -13,12 +10,7 @@ import { getCandidate } from "../services";
   "repoUrl": "https://github.com/tu-usuario/tu-repo"
 }
   */
-interface IBodyApplyPosition {
-  uuid: string;
-  jobId: string;
-  candidateId: string;
-  repoUrl: string;
-}
+
 interface IHandleSubmit {
   jobId: string;
 }
@@ -39,16 +31,7 @@ export const useApplyPosition = () => {
           repoUrl: MY_REPO_URL,
         };
 
-        const responseApi = await fetch(
-          `${BASE_URL_API}${sufixApplyPosition}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(bodyApplyPosition),
-          },
-        );
+        const responseApi = await applyPosition(bodyApplyPosition);
 
         if (!responseApi?.ok) {
           throw new Error("Ocurrio un error, no se pudo enviar la postulacion");
