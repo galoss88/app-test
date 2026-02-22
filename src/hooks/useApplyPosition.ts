@@ -24,6 +24,7 @@ export const useApplyPosition = () => {
           jobId: body.jobId,
           candidateId: dataCandidate.candidateId,
           repoUrl: body.repoUrl,
+          applicationId: dataCandidate.applicationId,
         };
 
         const responseApi = await applyPosition(bodyApplyPosition);

@@ -8,4 +8,5 @@ export interface IBodyApplyPosition {
   jobId: string;
   candidateId: string;
   repoUrl: string;
+  applicationId: string;
 }
