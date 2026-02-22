@@ -3,7 +3,7 @@ import { useGetPositions } from "../../hooks/useGetPositions";
 import type { IPositionsApi } from "../../types/types";
 import { PositionCard } from "./PositionCard";
 
-export const Positions = () => {
+export const PositionsPage = () => {
   const { positions, loading, error } = useGetPositions();
 
   if (loading) return <Loading />;
