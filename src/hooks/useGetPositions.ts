@@ -10,7 +10,7 @@ export const useGetPositions = () => {
   useEffect(() => {
     const getPositionsDataApi = async () => {
       try {
-        setError("");
+        resetDefault();
         setLoading(true);
         const responseApi = await getPositions();
 
@@ -32,6 +32,8 @@ export const useGetPositions = () => {
     };
     getPositionsDataApi();
   }, []);
-
+  const resetDefault = () => {
+    setError("");
+  };
   return { positions, loading, error };
 };
