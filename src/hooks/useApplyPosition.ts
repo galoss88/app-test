@@ -13,6 +13,9 @@ export const useApplyPosition = () => {
   const handleSubmit = async (body: IHandleSubmit) => {
     try {
       setError("");
+      if (!body.jobId || !body.repoUrl) {
+        throw new Error("Faltan completar datos para postular.");
+      }
       if (body) {
         setLoading(true);
         const dataCandidate = await getCandidate();
