@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { MY_REPO_URL } from "../config/contants";
 import { applyPosition, getCandidate } from "../services";
 import type { IBodyApplyPosition } from "../types/types";
 
@@ -21,7 +20,7 @@ export const useApplyPosition = () => {
           uuid: dataCandidate.uuid,
           jobId: body.jobId,
           candidateId: dataCandidate.candidateId,
-          repoUrl: MY_REPO_URL,
+          repoUrl: body.repoUrl,
         };
 
         const responseApi = await applyPosition(bodyApplyPosition);
