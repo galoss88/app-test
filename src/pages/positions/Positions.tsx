@@ -10,14 +10,7 @@ export const Positions = () => {
   if (error) return <h1>{error}</h1>;
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-        gap: "2rem",
-        padding: "2rem",
-      }}
-    >
+    <div style={stylesContainer}>
       {positions &&
         positions.length > 0 &&
         positions?.map((position: IPositionsApi) => (
@@ -25,4 +18,11 @@ export const Positions = () => {
         ))}
     </div>
   );
+};
+
+const stylesContainer: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+  gap: "2rem",
+  padding: "2rem",
 };
