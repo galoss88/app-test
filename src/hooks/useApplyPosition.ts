@@ -9,10 +9,10 @@ interface IHandleSubmit {
 export const useApplyPosition = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
-
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const handleSubmit = async (body: IHandleSubmit) => {
     try {
-      setError("");
+      resetDefault();
       if (!body.jobId || !body.repoUrl) {
         throw new Error("Faltan completar datos para postular.");
       }
@@ -29,19 +29,27 @@ export const useApplyPosition = () => {
         const responseApi = await applyPosition(bodyApplyPosition);
 
         if (!responseApi?.ok) {
-          throw new Error("Ocurrio un error, no se pudo enviar la postulacion.");
+          throw new Error(
+            "Ocurrio un error, no se pudo enviar la postulacion.",
+          );
         }
+        setIsSuccess(true);
       }
     } catch (error) {
       setError(error instanceof Error ? error.message : "Error desconocido.");
     } finally {
+      setTimeout(() => setIsSuccess(false), 3000);
       setLoading(false);
     }
   };
-
+  const resetDefault = () => {
+    setIsSuccess(false);
+    setError("");
+  };
   return {
     applyPosition: handleSubmit,
     loading,
     error,
+    isSuccess,
   };
 };

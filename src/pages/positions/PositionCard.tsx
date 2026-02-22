@@ -10,7 +10,7 @@ interface PositionCardProps {
 }
 
 export const PositionCard = ({ position }: PositionCardProps) => {
-  const { applyPosition, loading, error } = useApplyPosition();
+  const { applyPosition, loading, error, isSuccess } = useApplyPosition();
   const [repoUrl, setRepoUrl] = useState("");
 
   return (
@@ -34,7 +34,7 @@ export const PositionCard = ({ position }: PositionCardProps) => {
         onChange={(e) => setRepoUrl(e.target.value)}
       ></Card.Item.Input>
       {error && <ErrorMessage message={error} />}
-      {!error && <SuccessMessage message="ok" />}
+      {isSuccess && <SuccessMessage message="Postulación exitosa!" />}
       <Card.Item.Button
         title="Enviar postulación."
         type="submit"
