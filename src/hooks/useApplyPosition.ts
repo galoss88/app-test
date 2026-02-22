@@ -29,7 +29,7 @@ export const useApplyPosition = () => {
         const responseApi = await applyPosition(bodyApplyPosition);
 
         if (!responseApi?.ok) {
-          throw new Error("Ocurrio un error, no se pudo enviar la postulacion");
+          throw new Error("Ocurrio un error, no se pudo enviar la postulacion.");
         }
       }
     } catch (error) {
