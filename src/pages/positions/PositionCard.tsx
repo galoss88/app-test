@@ -33,9 +33,10 @@ export const PositionCard = ({ position }: PositionCardProps) => {
       ></Card.Item.Input>
       <Card.Item.Button
         title="Enviar postulación."
-        onClick={() => applyPosition({ jobId: position.id, repoUrl })}
+        type="submit"
+        onSubmit={() => applyPosition({ jobId: position.id, repoUrl })}
       >
-        Submit
+        Postular
       </Card.Item.Button>
     </Card>
   );
