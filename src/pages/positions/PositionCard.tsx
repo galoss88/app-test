@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card } from "../../components";
 import { ErrorMessage } from "../../components/ErrorMessage";
+import { SuccessMessage } from "../../components/SuccessMessage";
 import { useApplyPosition } from "../../hooks/useApplyPosition";
 import type { IPositionsApi } from "../../types/types";
 
@@ -33,6 +34,7 @@ export const PositionCard = ({ position }: PositionCardProps) => {
         onChange={(e) => setRepoUrl(e.target.value)}
       ></Card.Item.Input>
       {error && <ErrorMessage message={error} />}
+      {!error && <SuccessMessage message="ok" />}
       <Card.Item.Button
         title="Enviar postulación."
         type="submit"
