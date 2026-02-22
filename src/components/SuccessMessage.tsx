@@ -1,7 +1,15 @@
-export const SuccessMessage = ({ message }: { message: string }) => {
+interface ISuccessMessageProps extends React.ComponentPropsWithoutRef<"p"> {
+  message: string;
+}
+
+export const SuccessMessage = ({ message, ...rest }: ISuccessMessageProps) => {
   if (!message) return null;
 
-  return <p style={successStyle}>{message}</p>;
+  return (
+    <p {...rest} style={{ ...successStyle, ...rest.style }}>
+      {message}
+    </p>
+  );
 };
 
 const successStyle: React.CSSProperties = {
