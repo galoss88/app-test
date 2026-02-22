@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, Loading } from "../../components";
+import { Card } from "../../components";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { useApplyPosition } from "../../hooks/useApplyPosition";
 import type { IPositionsApi } from "../../types/types";
@@ -12,7 +12,6 @@ export const PositionCard = ({ position }: PositionCardProps) => {
   const { applyPosition, loading, error } = useApplyPosition();
   const [repoUrl, setRepoUrl] = useState("");
 
-  if (loading) return <Loading />;
   return (
     <Card
       key={position.id}
@@ -33,7 +32,7 @@ export const PositionCard = ({ position }: PositionCardProps) => {
         type="text"
         onChange={(e) => setRepoUrl(e.target.value)}
       ></Card.Item.Input>
-        {error && <ErrorMessage message={error} />}
+      {error && <ErrorMessage message={error} />}
       <Card.Item.Button
         title="Enviar postulación."
         type="submit"
