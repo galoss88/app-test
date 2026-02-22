@@ -1,4 +1,4 @@
-import { Positions } from "./pages/Positions";
+import Positions from "./pages/positions";
 
 function App() {
   return (
