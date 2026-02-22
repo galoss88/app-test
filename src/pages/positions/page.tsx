@@ -6,7 +6,7 @@ import { PositionCard } from "./PositionCard";
 export const PositionsPage = () => {
   const { positions, loading, error } = useGetPositions();
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading fullPage showSpinner />;
   if (error) return <h1>{error}</h1>;
 
   return (

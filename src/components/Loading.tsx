@@ -1,17 +1,33 @@
 import { LoadingSpinner } from "./LoadingSpinner";
 
-export const Loading = () => {
+interface LoadingProps extends React.ComponentPropsWithoutRef<"div"> {
+  fullPage?: boolean;
+  showSpinner?: boolean;
+  message?: string;
+}
+
+const DEFAULT_MESSAGE = "Cargando...";
+
+export const Loading = ({
+  fullPage = false,
+  showSpinner = false,
+  message = DEFAULT_MESSAGE,
+  style,
+  ...rest
+}: LoadingProps) => {
+  const containerStyle = fullPage ? { ...stylesFullPage, ...style } : style;
+
   return (
-    <div style={stylesContainer}>
+    <div style={containerStyle} {...rest}>
       <h1 style={stylesText}>
-        <LoadingSpinner />
-        Cargando...
+        {showSpinner && <LoadingSpinner />}
+        {message}
       </h1>
     </div>
   );
 };
 
-const stylesContainer: React.CSSProperties = {
+const stylesFullPage: React.CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -24,5 +40,5 @@ const stylesText: React.CSSProperties = {
   margin: 0,
   fontSize: "1.5rem",
   color: "#333",
-  fontWeight: "500",
+  fontWeight: 500,
 };
