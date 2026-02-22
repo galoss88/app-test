@@ -10,7 +10,12 @@ export const ErrorMessage = ({
   if (!message) return null;
 
   return (
-    <h2 style={{ ...defaultStyle, ...style }} {...rest}>
+    <h2
+      style={{ ...defaultStyle, ...style }}
+      {...rest}
+      role="alert" //por accesibilidad
+      aria-live="polite" //por accesibilidad
+    >
       {message}
     </h2>
   );
