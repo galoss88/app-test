@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card } from "../../components";
 import { useApplyPosition } from "../../hooks/useApplyPosition";
 import type { IPositionsApi } from "../../types/types";
@@ -8,6 +9,7 @@ interface PositionCardProps {
 
 export const PositionCard = ({ position }: PositionCardProps) => {
   const { applyPosition } = useApplyPosition();
+  const [repoUrl, setRepoUrl] = useState("");
 
   return (
     <Card
@@ -27,10 +29,11 @@ export const PositionCard = ({ position }: PositionCardProps) => {
       <Card.Item.Input
         placeholder="Github repository URL"
         type="text"
+        onChange={(e) => setRepoUrl(e.target.value)}
       ></Card.Item.Input>
       <Card.Item.Button
         title="Enviar postulación."
-        onClick={() => applyPosition({ jobId: position.id })}
+        onClick={() => applyPosition({ jobId: position.id, repoUrl })}
       >
         Submit
       </Card.Item.Button>

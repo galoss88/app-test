@@ -5,6 +5,7 @@ import type { IBodyApplyPosition } from "../types/types";
 
 interface IHandleSubmit {
   jobId: string;
+  repoUrl: string;
 }
 export const useApplyPosition = () => {
   const [loading, setLoading] = useState(false);
