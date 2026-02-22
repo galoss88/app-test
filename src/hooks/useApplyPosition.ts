@@ -2,14 +2,6 @@ import { useState } from "react";
 import { MY_REPO_URL } from "../config/contants";
 import { applyPosition, getCandidate } from "../services";
 import type { IBodyApplyPosition } from "../types/types";
-/*
-{
-  "uuid": "tu uuid (del Step 2)",
-  "jobId": "id de la posición (del Step 3)",
-  "candidateId": "tu candidateId (del Step 2)",
-  "repoUrl": "https://github.com/tu-usuario/tu-repo"
-}
-  */
 
 interface IHandleSubmit {
   jobId: string;
