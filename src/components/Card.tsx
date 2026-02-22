@@ -2,7 +2,7 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 import { Title } from "./Title";
 
-interface CardProps {
+interface CardProps extends React.ComponentPropsWithoutRef<"div"> {
   children: React.ReactNode;
   style?: React.CSSProperties;
 }
