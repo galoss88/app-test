@@ -1,15 +1,14 @@
 import { Card } from "../../components";
+import { useApplyPosition } from "../../hooks/useApplyPosition";
 import type { IPositionsApi } from "../../types/types";
 
 interface PositionCardProps {
   position: IPositionsApi;
-  applyPosition: (params: { jobId: string }) => void;
 }
 
-export const PositionCard = ({
-  position,
-  applyPosition,
-}: PositionCardProps) => {
+export const PositionCard = ({ position }: PositionCardProps) => {
+  const { applyPosition } = useApplyPosition();
+
   return (
     <Card
       key={position.id}
